@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '{print $NF}')",
+      "Bash(cp -R /Users/geekyprince/Desktop/rezulyzer/Rezulyzer-client/src/redux/. /Users/geekyprince/Desktop/rezulyzer/apps/web/src/redux/)",
+      "Bash(cp -R /Users/geekyprince/Desktop/rezulyzer/Rezulyzer-client/src/services/. /Users/geekyprince/Desktop/rezulyzer/apps/web/src/services/)",
+      "Bash(cp -R /Users/geekyprince/Desktop/rezulyzer/Rezulyzer-client/src/hooks/. /Users/geekyprince/Desktop/rezulyzer/apps/web/src/hooks/)",
+      "Bash(cp -R /Users/geekyprince/Desktop/rezulyzer/Rezulyzer-client/src/components/. /Users/geekyprince/Desktop/rezulyzer/apps/web/src/components/)",
+      "Bash(cp -R /Users/geekyprince/Desktop/rezulyzer/Rezulyzer-client/src/pages/. /Users/geekyprince/Desktop/rezulyzer/apps/web/src/pages/)",
+      "Bash(APP=/Users/geekyprince/Desktop/rezulyzer/apps/web/src/app *)",
+      "Bash(npm run *)",
+      "Bash(node -e ' *)",
+      "Bash(timeout 8 node -e ' *)",
+      "Bash(node src/seeders/createSuperAdminNew.js)",
+      "Bash(node scripts/resetSuperAdminPassword.js)",
+      "Bash(grep -vE \"Duplicate schema|Use \\\\`node\")",
+      "Bash(lsof -nP -iTCP -sTCP:LISTEN)",
+      "Bash(ps -eo pid,command)",
+      "Bash(sleep 8 && cat /tmp/cors-smoke.log 2>/dev/null | grep -vE \"Duplicate schema|Use \\\\`node\" | head -20)",
+      "Bash(grep -nA2 \"settings:\" /Users/geekyprince/Desktop/rezulyzer/apps/api/src/models/Test.js)",
+      "Bash(grep -vE \"Duplicate schema|Use \\\\`node\" /tmp/api-rl.log)",
+      "Bash(ps -eo pid,etime,command)",
+      "Bash(pkill -f 'next dev')",
+      "Bash(pkill -f 'nodemon server.js')",
+      "Bash(pkill -f 'node server.js')",
+      "Bash(xargs kill -9)",
+      "Bash(kill -9 223 25102 28601 28882 87896)",
+      "Bash(kill -9 88548 91735)",
+      "Bash(grep -vE \"Duplicate schema|Use \\\\`node\" /tmp/api-routes.log)",
+      "Bash(pkill -f 'node -e')",
+      "Bash(grep -v -E \"Duplicate schema|Use \\\\`node\")"
+    ]
+  }
+}

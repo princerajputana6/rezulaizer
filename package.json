@@ -1,0 +1,31 @@
+{
+  "name": "rezulyzer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rezulyzer monorepo: Next.js web app + Express API",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "predev": "npm run stop --silent",
+    "dev": "turbo run dev",
+    "dev:web": "npm run dev --workspace=@rezulyzer/web",
+    "dev:api": "npm run dev --workspace=@rezulyzer/api",
+    "stop": "lsof -ti tcp:3000,8000 2>/dev/null | xargs kill -9 2>/dev/null; pkill -f 'next dev' 2>/dev/null; pkill -f 'nodemon server.js' 2>/dev/null; pkill -f 'node server.js' 2>/dev/null; exit 0",
+    "build": "turbo run build",
+    "build:web": "npm run build --workspace=@rezulyzer/web",
+    "start:web": "npm run start --workspace=@rezulyzer/web",
+    "start:api": "npm run start --workspace=@rezulyzer/api",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "rm -rf apps/web/.next apps/web/.turbo .turbo"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.6"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "packageManager": "npm@11.6.2"
+}

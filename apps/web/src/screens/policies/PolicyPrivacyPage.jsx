@@ -1,0 +1,21 @@
+'use client';
+import React from 'react';
+
+const PolicyPrivacyPage = () => (
+  <div className="min-h-screen bg-gray-50 py-12">
+    <div className="max-w-3xl mx-auto px-4">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">Privacy Policy</h1>
+      <div className="bg-white rounded-lg shadow-sm border p-6 space-y-4 text-gray-700">
+        <p>At Rezulyzer, we take your privacy seriously. This page explains how we collect and use information.</p>
+        <h2 className="text-xl font-semibold text-gray-900">Information We Collect</h2>
+        <p>We collect basic account info and operational data to provide and improve our services.</p>
+        <h2 className="text-xl font-semibold text-gray-900">Security</h2>
+        <p>We apply encryption and access controls to protect your data.</p>
+        <h2 className="text-xl font-semibold text-gray-900">Contact</h2>
+        <p>Contact: support@rezulyzer.com</p>
+      </div>
+    </div>
+  </div>
+);
+
+export default PolicyPrivacyPage;
