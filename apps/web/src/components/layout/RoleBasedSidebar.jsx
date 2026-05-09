@@ -26,7 +26,6 @@ import {
   X,
   Zap
 } from 'lucide-react';
-import logo from '../../assets/images/rezulaizer.png';
 
 const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
   const currentUser = useSelector(selectCurrentUser);
@@ -169,20 +168,18 @@ const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
           {!isCollapsed && (
             <div className="flex items-center space-x-2">
               <img 
-                src={logo || '/logo.png'} 
+                src="/logo.png" 
                 alt="Rezulyzer" 
                 className="h-10 w-auto object-contain"
-                onError={(e) => { e.target.src = '/logo.png'; }}
               />
             </div>
           )}
           {isCollapsed && (
             <div className="flex items-center justify-center w-full">
               <img 
-                src={logo || '/logo.png'} 
+                src="/logo.png" 
                 alt="Rezulyzer" 
                 className="h-8 w-auto object-contain"
-                onError={(e) => { e.target.src = '/logo.png'; }}
               />
             </div>
           )}

@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from '@/lib/router-compat';
-import logo from '../../../assets/images/rezulaizer.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,7 +38,7 @@ const Header = () => {
           <div className="flex items-center justify-center">
             <Link to="/" className="group">
               <img 
-                src={logo} 
+                src="/logo.png" 
                 alt="Rezulyzer" 
                 className="h-12 md:h-16 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
               />

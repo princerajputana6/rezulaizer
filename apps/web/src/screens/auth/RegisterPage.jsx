@@ -9,7 +9,6 @@ import {
 } from 'lucide-react';
 import { showToast } from '../../redux/slices/toastSlice';
 import { apiClient } from '../../services/apiClient';
-import logo from '../../assets/images/rezulaizer.png';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -142,7 +141,7 @@ const RegisterPage = () => {
           <div className="absolute bottom-20 left-40 w-72 h-72 bg-cyan-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
         <div className="relative z-10 flex flex-col justify-center px-12 w-full">
-          <Link to="/" className="mb-12"><img src={logo} alt="Rezulyzer" className="h-12 w-auto" /></Link>
+          <Link to="/" className="mb-12"><img src="/logo.png" alt="Rezulyzer" className="h-12 w-auto" /></Link>
           <h1 className="text-5xl font-bold text-white mb-6">
             Start Your<span className="block mt-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">Hiring Journey</span>
           </h1>
@@ -167,7 +166,7 @@ const RegisterPage = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white overflow-y-auto">
         <div className="max-w-md w-full">
           <div className="lg:hidden flex justify-center mb-8">
-            <Link to="/"><img src={logo} alt="Rezulyzer" className="h-10 w-auto" /></Link>
+            <Link to="/"><img src="/logo.png" alt="Rezulyzer" className="h-10 w-auto" /></Link>
           </div>
 
           <div className="mb-8">

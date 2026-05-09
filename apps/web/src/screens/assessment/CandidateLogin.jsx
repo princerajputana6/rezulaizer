@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from '@/lib/router-compat';
 import { Eye, EyeOff, Mail, Lock, ClipboardList, Clock, Shield, CheckCircle } from 'lucide-react';
 import { candidateApiClient } from '../../services/candidateApiClient';
-import logo from '../../assets/images/rezulaizer.png';
 
 const CandidateLogin = () => {
   const navigate = useNavigate();
@@ -105,7 +104,7 @@ const CandidateLogin = () => {
       <div className="min-h-screen flex">
         <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 items-center justify-center">
           <div className="text-center">
-            <img src={logo} alt="Rezulyzer" className="h-12 w-auto mx-auto mb-8" />
+            <img src="/logo.png" alt="Rezulyzer" className="h-12 w-auto mx-auto mb-8" />
             <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-400 mx-auto mb-4"></div>
             <p className="text-blue-300 text-sm">Verifying your invitation...</p>
           </div>
@@ -133,7 +132,7 @@ const CandidateLogin = () => {
         </div>
 
         <div className="relative z-10 flex flex-col justify-center px-12 w-full">
-          <img src={logo} alt="Rezulyzer" className="h-12 w-auto mb-12" />
+          <img src="/logo.png" alt="Rezulyzer" className="h-12 w-auto mb-12" />
 
           <h1 className="text-5xl font-bold text-white mb-6">
             Assessment
@@ -169,7 +168,7 @@ const CandidateLogin = () => {
         <div className="max-w-md w-full space-y-8">
           {/* Mobile logo */}
           <div className="lg:hidden flex justify-center mb-6">
-            <img src={logo} alt="Rezulyzer" className="h-10 w-auto" />
+            <img src="/logo.png" alt="Rezulyzer" className="h-10 w-auto" />
           </div>
 
           <div>

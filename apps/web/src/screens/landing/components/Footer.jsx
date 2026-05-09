@@ -2,7 +2,6 @@
 import React from 'react';
 import { Shield, FileText, Cookie, Mail, Twitter, Linkedin, Github } from 'lucide-react';
 import { Link } from '@/lib/router-compat';
-import logo from '../../../assets/images/rezulaizer.png';
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -12,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <img src={logo} alt="Rezulyzer" className="h-10 w-auto mb-4" />
+            <img src="/logo.png" alt="Rezulyzer" className="h-10 w-auto mb-4" />
             <p className="text-sm text-gray-400 leading-relaxed">
               AI-powered recruitment platform for parsing resumes, matching candidates, and conducting intelligent interviews.
             </p>

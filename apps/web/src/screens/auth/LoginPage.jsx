@@ -7,7 +7,6 @@ import { loginStart, loginSuccess, loginFailure } from '../../redux/slices/authS
 import { showToast } from '../../redux/slices/toastSlice';
 import authService from '../../services/authService';
 import PasswordResetModal from '../../components/PasswordResetModal';
-import logo from '../../assets/images/rezulaizer.png';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -120,7 +119,7 @@ const LoginPage = () => {
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center px-12 w-full">
           <Link to="/" className="mb-12">
-            <img src={logo} alt="Rezulyzer" className="h-12 w-auto" />
+            <img src="/logo.png" alt="Rezulyzer" className="h-12 w-auto" />
           </Link>
           
           <h1 className="text-5xl font-bold text-white mb-6">
@@ -159,7 +158,7 @@ const LoginPage = () => {
           {/* Mobile Logo */}
           <div className="lg:hidden flex justify-center mb-8">
             <Link to="/">
-              <img src={logo} alt="Rezulyzer" className="h-10 w-auto" />
+              <img src="/logo.png" alt="Rezulyzer" className="h-10 w-auto" />
             </Link>
           </div>
 
