@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from '@/lib/router-compat';
-import { apiClient } from '../../services/apiClient';
+import axios from 'axios';
 import {
   Video,
   VideoOff,
@@ -21,6 +21,11 @@ import {
   AlertCircle,
   CheckCircle
 } from 'lucide-react';
+
+const publicApi = axios.create({
+  baseURL: (typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_API_URL) || 'http://localhost:8000/api',
+  timeout: 15000,
+});
 
 const VideoInterviewRoom = () => {
   const { token } = useParams();
@@ -93,21 +98,22 @@ const VideoInterviewRoom = () => {
   const validateTokenAndLoadInterview = async () => {
     try {
       setLoading(true);
-      const response = await apiClient.get(`/video-interview-invitations/validate/${token}`);
+      const response = await publicApi.get(`/candidates/video-interview/validate/${token}`);
       
       if (response.data.success) {
         const data = response.data.data;
-        setInterview(data.interview);
         setCandidate(data.candidate);
-        
-        // Mark as joined
-        await apiClient.post(`/video-interview-invitations/${token}/join`);
+        setInterview({ company: data.company });
       } else {
         setError('Invalid or expired interview link');
       }
     } catch (error) {
       console.error('Error validating token:', error);
-      setError('Failed to load interview. Please check your link.');
+      if (error.response?.status === 404) {
+        setError('Invalid or expired interview link. This link may have already been used.');
+      } else {
+        setError('Failed to load interview. Please check your connection and try again.');
+      }
     } finally {
       setLoading(false);
     }

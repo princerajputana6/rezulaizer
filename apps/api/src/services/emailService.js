@@ -357,6 +357,14 @@ const sendEmail = async ({ to, subject, template, data, html, text }) => {
       text: emailContent.text
     };
 
+    console.log('[sendEmail] Final mailOptions:', {
+      from: mailOptions.from,
+      to: mailOptions.to,
+      subject: mailOptions.subject,
+      htmlLength: mailOptions.html?.length || 0,
+      htmlPreview: mailOptions.html?.substring(0, 100)
+    });
+
     try {
       await transporter.verify();
     } catch (verr) {
@@ -479,7 +487,7 @@ const sendAssessmentResultEmail = async (candidateEmail, data) => {
     <p>We appreciate the time you put in and wish you the best in your search.</p>
     <p>— ${data.companyName || 'Rezulyzer'}</p>
   `);
-  return sendEmail({ to: candidateEmail, raw: { subject, html } });
+  return sendEmail({ to: candidateEmail, subject, html });
 };
 
 const sendVideoInterviewInvite = async (candidateEmail, data) => {
@@ -519,7 +527,7 @@ const sendVideoInterviewInvite = async (candidateEmail, data) => {
   console.log('[VideoInterview] Subject:', subject);
   console.log('[VideoInterview] URL:', url);
   
-  return sendEmail({ to: candidateEmail, raw: { subject, html } });
+  return sendEmail({ to: candidateEmail, subject, html });
 };
 
 const sendVideoInterviewResultEmail = async (candidateEmail, data) => {
@@ -538,7 +546,7 @@ const sendVideoInterviewResultEmail = async (candidateEmail, data) => {
     <p>We genuinely appreciate your effort and wish you the best.</p>
     <p>— ${data.companyName || 'Rezulyzer'}</p>
   `);
-  return sendEmail({ to: candidateEmail, raw: { subject, html } });
+  return sendEmail({ to: candidateEmail, subject, html });
 };
 
 const sendOfferLetterEmail = async (candidateEmail, data) => {
@@ -552,16 +560,25 @@ const sendOfferLetterEmail = async (candidateEmail, data) => {
     <p>Please reply to this email to confirm your acceptance, or reach out with any questions.</p>
     <p>— ${data.companyName || 'Rezulyzer'}</p>
   `);
-  return sendEmail({ to: candidateEmail, raw: { subject, html } });
+  return sendEmail({ to: candidateEmail, subject, html });
 };
 
 // Patch sendEmail to support a raw {subject, html} body bypassing templates.
 // (kept here so we don't have to touch the template registry above.)
 const _sendEmailOriginal = sendEmail;
 const sendEmailExtended = async (options) => {
+  console.log('[sendEmailExtended] Called with:', JSON.stringify({
+    hasOptions: !!options,
+    hasRaw: !!options?.raw,
+    hasSubject: !!options?.raw?.subject,
+    hasHtml: !!options?.raw?.html,
+    to: options?.to,
+    subjectPreview: options?.raw?.subject?.substring(0, 50)
+  }, null, 2));
+  
   // If raw email data is provided, extract it and pass to original function
   if (options && options.raw && options.raw.subject && options.raw.html) {
-    console.log('[sendEmailExtended] Using RAW email mode');
+    console.log('[sendEmailExtended] ✅ Using RAW email mode');
     console.log('[sendEmailExtended] Subject:', options.raw.subject);
     
     // Pass the raw data as direct properties to the original sendEmail function
@@ -573,6 +590,7 @@ const sendEmailExtended = async (options) => {
   }
   
   // Otherwise use template mode
+  console.log('[sendEmailExtended] ❌ Using TEMPLATE mode (raw data missing)');
   return _sendEmailOriginal(options);
 };
 
