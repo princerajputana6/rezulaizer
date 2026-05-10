@@ -161,9 +161,9 @@ const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
   };
 
   return (
-    <div className={`bg-white shadow-lg transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'} h-screen flex flex-col border-r border-gray-200`}>
+    <div className={`bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 shadow-lg transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'} h-screen flex flex-col border-r border-white/10`}>
       {/* Header */}
-      <div className="p-4 border-b border-gray-200">
+      <div className="p-4 border-b border-white/10">
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex items-center space-x-2">
@@ -185,7 +185,7 @@ const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
           )}
           <button
             onClick={onToggle}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-500 hover:text-gray-700"
+            className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-300 hover:text-white"
           >
             {isCollapsed ? <Menu className="w-4 h-4" /> : <X className="w-4 h-4" />}
           </button>
@@ -204,16 +204,16 @@ const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
                 <>
                   <button
                     onClick={() => toggleSection(section.section)}
-                    className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors group"
+                    className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors group"
                   >
                     <div className="flex items-center space-x-2">
-                      <SectionIcon className="w-4 h-4 text-gray-500" />
+                      <SectionIcon className="w-4 h-4 text-gray-400" />
                       <span className="text-xs uppercase tracking-wide font-semibold">{section.section}</span>
                     </div>
                     {isExpanded ? (
-                      <ChevronDown className="w-3 h-3 text-gray-400" />
+                      <ChevronDown className="w-3 h-3 text-gray-500" />
                     ) : (
-                      <ChevronRight className="w-3 h-3 text-gray-400" />
+                      <ChevronRight className="w-3 h-3 text-gray-500" />
                     )}
                   </button>
                   
@@ -228,12 +228,12 @@ const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
                           to={item.href}
                           className={`flex items-center px-3 py-2 ml-4 text-sm font-medium rounded-lg transition-colors ${
                             itemIsActive
-                              ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-600'
-                              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                              ? 'bg-blue-600 text-white'
+                              : 'text-gray-300 hover:text-white hover:bg-white/10'
                           }`}
                         >
                           <Icon className={`w-4 h-4 mr-3 ${
-                            itemIsActive ? 'text-blue-600' : 'text-gray-400'
+                            itemIsActive ? 'text-white' : 'text-gray-400'
                           }`} />
                           <span>{item.name}</span>
                         </NavLink>
@@ -253,8 +253,8 @@ const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
                         to={item.href}
                         className={`flex items-center justify-center p-2 rounded-lg transition-colors ${
                           itemIsActive
-                            ? 'bg-blue-50 text-blue-600'
-                            : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
+                            ? 'bg-blue-600 text-white'
+                            : 'text-gray-400 hover:text-white hover:bg-white/10'
                         }`}
                         title={item.name}
                       >
@@ -270,16 +270,16 @@ const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
       </nav>
 
       {/* User Info & Logout */}
-      <div className="p-4 border-t border-gray-200">
+      <div className="p-4 border-t border-white/10">
         {!isCollapsed && (
-          <div className="mb-3 p-3 bg-gray-50 rounded-lg">
+          <div className="mb-3 p-3 bg-white/5 rounded-lg">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-medium text-sm">
                 {currentUser?.email?.charAt(0).toUpperCase()}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">{currentUser?.email}</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-sm font-medium text-white truncate">{currentUser?.email}</p>
+                <p className="text-xs text-gray-400">
                   {normalizedRole === 'superadmin' ? 'Super Administrator' : 
                    normalizedRole === 'company' || normalizedRole === 'company_admin' ? 'Company Admin' :
                    normalizedRole === 'hr' || normalizedRole === 'hr_manager' ? 'HR Manager' : 'Candidate'}
@@ -293,7 +293,7 @@ const RoleBasedSidebar = ({ isCollapsed, onToggle }) => {
             localStorage.removeItem('token');
             window.location.href = '/login';
           }}
-          className={`flex items-center w-full px-3 py-2 text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors ${
+          className={`flex items-center w-full px-3 py-2 text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors ${
             isCollapsed ? 'justify-center' : ''
           }`}
           title={isCollapsed ? 'Logout' : ''}
